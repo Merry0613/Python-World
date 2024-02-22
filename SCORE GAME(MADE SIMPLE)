@@ -1,0 +1,44 @@
+import sys
+import pygame
+from pygame.locals import *
+pygame.init()
+SCREEN=pygame.display.set_mode((1200,600))
+CLOCK=pygame.time.Clock()
+Black=(0,0,0)
+White=(255,255,255)
+sysfont=pygame.font.SysFont(None,144)
+goalfont=pygame.font.SysFont(None,144)
+esfont=pygame.font.SysFont(None,36)
+txt=sysfont.render("0",True,Black)
+goal=goalfont.render("100",True,Black)
+ESfont=esfont.render("0",True,Black)
+S=0
+ES=0
+Goal=100
+while True :
+    SCREEN.fill(White)
+    ES+=1
+    ESfont=esfont.render("%d"%ES,True,(0,0,0))
+    for event in pygame.event.get() :
+        if event.type==QUIT :
+            pygame.quit()
+            sys.exit()
+        if event.type==MOUSEBUTTONDOWN :
+            if event.button==1 :
+                ES+=5
+                S+=ES
+                ES=1
+                txt=sysfont.render("%d"%S,True,(0,0,90),(255,200,200))
+                if Goal<=S :
+                    Goal*=2
+                    Goal+=300
+                    goal=goalfont.render("%d"%Goal,True,Black)
+        if event.type==KEYDOWN :
+            if event.key==K_ESCAPE :
+                pygame.quit()
+                sys.exit()
+    SCREEN.blit(txt,(550,250))
+    SCREEN.blit(goal,(550,150))
+    SCREEN.blit(ESfont,(50,550))
+    pygame.display.update()
+    CLOCK.tick(60)
