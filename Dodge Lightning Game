@@ -9,38 +9,48 @@ Black=(0,0,0)
 White=(255,255,255)
 Red=(255,0,0)
 sysfont=pygame.font.SysFont(None,72)
+timefont=pygame.font.SysFont(None,54)
 light=pygame.image.load("light.png")
 man=pygame.image.load("man.png")
 txt=sysfont.render("",True,Red)
+timer=timefont.render("0",True,White)
 x=225
 y=450
+time=0
 none=0
 xh=0
 xmh=0
+timing=0
 lightX=(random.randint(0,450))
 lightY=0
 img_size=man.get_size()
 print(img_size)
 while True :
     SCREEN.fill(Black)
-    if none!=1 :
-        lightY+=15
+    timing+=1
     xh=x+25
     xmh=x-50
+    if timing>=60 :
+        timing=0
+        if none!=1 :
+            time+=1
+            timer=sysfont.render("%d"%time,True,White)
+    if none!=1 :
+        lightY+=7.5
     for event in pygame.event.get() :
         if event.type==QUIT :
             pygame.quit()
             sys.exit()
     key_event=pygame.key.get_pressed()
     if key_event[pygame.K_LEFT] :
-                x-=10
+                x-=5
     if key_event[pygame.K_RIGHT] :
-                x+=10
+                x+=5
     if lightY>=525 :
         if none!=1 :
             lightY=0
             lightX=(random.randint(0,450))
-    if lightY>=370 :
+    if lightY>=420 :
         if lightX<=xh :
             if lightX >=xmh :
                 y=5000
@@ -48,6 +58,7 @@ while True :
                 lightY=5000
                 txt=sysfont.render("GAME OVER",True,Red)
     SCREEN.blit(txt,(75,250))
+    SCREEN.blit(timer,(0,550))
     SCREEN.blit(man,(x,y))
     SCREEN.blit(light,(lightX,lightY))
     pygame.display.update()
