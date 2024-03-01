@@ -69,3 +69,4 @@ while True :
     SCREEN.blit(light,(lightX,lightY))
     pygame.display.update()
     CLOCK.tick(60)
+
