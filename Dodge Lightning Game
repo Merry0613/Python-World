@@ -21,6 +21,8 @@ none=0
 xh=0
 xmh=0
 timing=0
+speed=7.5
+speedy=0
 lightX=(random.randint(0,450))
 lightY=0
 img_size=man.get_size()
@@ -34,9 +36,13 @@ while True :
         timing=0
         if none!=1 :
             time+=1
+            speedy+=1
             timer=sysfont.render("%d"%time,True,White)
+            if speedy>=4 :
+                speedy=0
+                speed+=2.5
     if none!=1 :
-        lightY+=7.5
+        lightY+=speed
     for event in pygame.event.get() :
         if event.type==QUIT :
             pygame.quit()
