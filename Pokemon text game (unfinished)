@@ -1,0 +1,167 @@
+import random
+EnemyPoke=0
+EnemyLevel=1
+Starting="none"
+Poke1=""
+Poke1Level=1
+Poke1skill1='몸통박치기'
+Poke1skill2='울음소리'
+Poke1skill3=''
+Poke1skill4=''
+EnemyHp=1
+Poke1Hp=1
+hurt=0
+def Levelup():
+    global Poke1
+    global Poke1Level
+    global Poke1skill1
+    global Poke1skill2
+    global Poke1skill3
+    global Poke1skill4
+    Poke1Level+=1
+    input("%s는 레벨이 1 올랐다!"%Poke1)
+    if Poke1=='파이리' :
+        if Poke1Level>=7 :
+            if Poke1skill4=="" :
+                Poke1skill4="연막"
+                input("%s는 %s을(를) 배웠다!"%(Poke1,Poke1skill4))
+    if Poke1=='꼬부기' :
+        if Poke1Level>=5 :
+            if Poke1skill4=="" :
+                Poke1skill4="껍질에숨기"
+                input("%s는 %s을(를) 배웠다!"%(Poke1,Poke1skill4))
+    if Poke1=='이상해씨' :
+        if Poke1Level>=7 :
+            if Poke1skill4=="" :
+                Poke1skill4="성장"
+                input("%s는 %s을(를) 배웠다!"%(Poke1,Poke1skill4))
+def battle() :
+    global Poke1
+    global Poke1Level
+    global Poke1skill1
+    global Poke1skill2
+    global Poke1skill3
+    global Poke1skill4
+    global EnemyPoke
+    global EnemyLevel
+    global EnemyHp
+    global Poke1Hp
+    global hurt
+    EnemyHp=90+10*EnemyLevel
+    print("야생의 %s이(가) 나타났다!"%EnemyPoke)
+    print("'조작법 확인'으로 확인")
+    while True :
+        Do=input("%s는(은) 무엇을 할까?"%Poke1)
+        if Do=="조작법 확인" :
+            print(" 기술1 사용 :'기술1'")
+            print(" 기술2 사용 :'기술2'")
+            print(" 기술3 사용 :'기술3'")
+            print(" 기술4 사용 :'기술4'")
+            print(" 기술 확인 :'기술 확인'")
+            print(" 정보 확인 :'정보 확인'")
+            print(" 도망 시도 :'도망'")
+            print(" 아이템 사용 :'아이템'")
+        if Do=="기술 확인":
+            print("기술1:%s"%Poke1skill1)
+            print("기술2:%s"%Poke1skill2)
+            print("기술3:%s"%Poke1skill3)
+            print("기술4:%s"%Poke1skill4)
+        if Do=="정보 확인":
+            print("적 체력:%s"%EnemyHp)
+            print("내 체력:%s"%Poke1Hp)
+            print("적 레벨:%s"%EnemyLevel)
+            print("내 레벨:%s"%Poke1Level)
+        if Do=="기술1":
+            input("%s의 %s!"%(Poke1,Poke1skill1))
+            if Poke1skill1=='몸통박치기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='할퀴기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+        if Do=="기술2":
+            input("%s의 %s!"%(Poke1,Poke1skill2))
+            if Poke1skill2=='째려보기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill2=='꼬리흔들기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill2=='울음소리':
+                input("%s는공격이 떨어졌다!"%EnemyPoke)
+        if Do=="기술3":
+            input("%s의 %s!"%(Poke1,Poke1skill3))
+            if Poke1skill3=='덩굴채찍':
+                hurt=60+(10*Poke1Level)
+                input("%s의 덩굴채찍!"%Poke1)
+                EnemyHp-=hurt
+            if Poke1skill3=='불꽃세례':
+                hurt=60+(10*Poke1Level)
+                input("%s의 불꽃세례!"%Poke1)
+                EnemyHp-=hurt
+            if Poke1skill3=='물대포':
+                hurt=60+(10*Poke1Level)
+                input("%s의 물대포!"%Poke1)
+                EnemyHp-=hurt
+        if Do=="기술4":
+            input("%s의 %s!"%(Poke1,Poke1skill4))
+            if Poke1skill2=='연막':
+                input("%s는 명중률이 떨어졌다!"%EnemyPoke)
+            if Poke1skill2=='껍질에숨기':
+                input("%s는 방어가 올라갔다!"%Poke1)
+            if Poke1skill2=='성장':
+                input("%s는 공격이 올라갔다!"%Poke1)
+                input("%s는 특수공격이 올라갔다!"%Poke1)
+        if EnemyHp<=1 :
+            input("%s는 승리했다!"%Poke1)
+            Levelup()
+            break
+input("???:안녕하시게나!")
+input("박사:나는 포켓몬 박사라고 하네!")
+input("박사:자네의 이름은 무엇인가?")
+Name=input("자신의 이름은?")
+input("박사:음...%s(이)라...좋은 이름이군."%Name)
+input("박사:이 세상은 매우 위험하기 때문에...")
+input("박사:스타팅 포켓몬을 가져가는 것이 좋겠군!")
+input("박사:파이리,꼬부기,이상해씨 중에서 원하는 포켓몬을 가져가게나!")
+while True :
+        Starting=input("무슨 포켓몬을 고를까?")
+        if Starting=="파이리" :
+            Poke1='파이리'
+            Poke1skill1='할퀴기'
+            Poke1skill2='째려보기'
+            Poke1skill3='불꽃세례'
+            Poke1skill4=''
+            break
+        if Starting=="꼬부기" :
+            Poke1='꼬부기'
+            Poke1skill1='몸통박치기'
+            Poke1skill2='꼬리흔들기'
+            Poke1skill3='물대포'
+            Poke1skill4=''
+            break
+        if Starting=="이상해씨" :
+            Poke1='이상해씨'
+            Poke1skill1='몸통박치기'
+            Poke1skill2='울음소리'
+            Poke1skill3='덩굴채찍'
+            Poke1skill4=''
+            break
+Poke1Level=5
+Poke1Hp=90+30*Poke1Level
+input("박사:%s를 선택하다니...보는 안목이 있군!"%Poke1)
+input("박사:그럼,1번도로로 데려다 주겠네.")
+input("박사:자네의 길을 응원하겠네!")
+while True :
+    input("...")
+    A=random.randint(1,5)
+    if A==1:
+        EnemyPoke='꼬렛'
+    if A==2:
+        EnemyPoke='구구'
+    if A==3:
+        EnemyPoke='꼬렛'
+    if A==4:
+        EnemyPoke='깨비참'
+    if A==5:
+        EnemyPoke='피카츄'
+    EnemyLevel=random.randint(3,7)
+    battle()
