@@ -11,6 +11,11 @@ Poke1skill4=''
 EnemyHp=1
 Poke1Hp=1
 hurt=0
+Do=""
+Money=5000
+Potion=0
+Pokeball=0
+Pokegrass=0
 def Levelup():
     global Poke1
     global Poke1Level
@@ -47,7 +52,8 @@ def battle() :
     global EnemyHp
     global Poke1Hp
     global hurt
-    EnemyHp=90+10*EnemyLevel
+    global Do
+    EnemyHp=90+30*EnemyLevel
     print("야생의 %s이(가) 나타났다!"%EnemyPoke)
     print("'조작법 확인'으로 확인")
     while True :
@@ -66,6 +72,13 @@ def battle() :
             print("기술2:%s"%Poke1skill2)
             print("기술3:%s"%Poke1skill3)
             print("기술4:%s"%Poke1skill4)
+        if Do=="도망 시도":
+            run=random.randint(1,3)
+            if run==1 :
+                input("%s는 무사히 도망쳤다!"%Name)
+                break
+            else :
+                input("도망칠 수 없다!")
         if Do=="정보 확인":
             print("적 체력:%s"%EnemyHp)
             print("내 체력:%s"%Poke1Hp)
@@ -79,35 +92,152 @@ def battle() :
             if Poke1skill1=='할퀴기':
                 hurt=40+(20*Poke1Level)
                 EnemyHp-=hurt
+            if Poke1skill1=='째려보기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill1=='꼬리흔들기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill1=='울음소리':
+                input("%s는공격이 떨어졌다!"%EnemyPoke)
+            if Poke1skill1=='물기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='쪼기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='전기쇼크':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='덩굴채찍':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='불꽃세례':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='물대포':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill1=='연막':
+                input("%s는 명중률이 떨어졌다!"%EnemyPoke)
+            if Poke1skill1=='껍질에숨기':
+                input("%s는 방어가 올라갔다!"%Poke1)
+            if Poke1skill1=='성장':
+                input("%s는 공격이 올라갔다!"%Poke1)
+                input("%s는 특수공격이 올라갔다!"%Poke1)
         if Do=="기술2":
             input("%s의 %s!"%(Poke1,Poke1skill2))
+            if Poke1skill2=='몸통박치기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill2=='할퀴기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
             if Poke1skill2=='째려보기':
                 input("%s는 방어가 떨어졌다!"%EnemyPoke)
             if Poke1skill2=='꼬리흔들기':
                 input("%s는 방어가 떨어졌다!"%EnemyPoke)
             if Poke1skill2=='울음소리':
                 input("%s는공격이 떨어졌다!"%EnemyPoke)
-        if Do=="기술3":
-            input("%s의 %s!"%(Poke1,Poke1skill3))
-            if Poke1skill3=='덩굴채찍':
+            if Poke1skill2=='물기':
                 hurt=60+(10*Poke1Level)
-                input("%s의 덩굴채찍!"%Poke1)
                 EnemyHp-=hurt
-            if Poke1skill3=='불꽃세례':
+            if Poke1skill2=='쪼기':
                 hurt=60+(10*Poke1Level)
-                input("%s의 불꽃세례!"%Poke1)
                 EnemyHp-=hurt
-            if Poke1skill3=='물대포':
+            if Poke1skill2=='전기쇼크':
                 hurt=60+(10*Poke1Level)
-                input("%s의 물대포!"%Poke1)
                 EnemyHp-=hurt
-        if Do=="기술4":
-            input("%s의 %s!"%(Poke1,Poke1skill4))
+            if Poke1skill2=='덩굴채찍':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill2=='불꽃세례':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill2=='물대포':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
             if Poke1skill2=='연막':
                 input("%s는 명중률이 떨어졌다!"%EnemyPoke)
             if Poke1skill2=='껍질에숨기':
                 input("%s는 방어가 올라갔다!"%Poke1)
             if Poke1skill2=='성장':
+                input("%s는 공격이 올라갔다!"%Poke1)
+                input("%s는 특수공격이 올라갔다!"%Poke1)
+        if Do=="기술3":
+            input("%s의 %s!"%(Poke1,Poke1skill3))
+            if Poke1skill3=='몸통박치기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='할퀴기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='째려보기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill3=='꼬리흔들기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill3=='울음소리':
+                input("%s는공격이 떨어졌다!"%EnemyPoke)
+            if Poke1skill3=='물기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='쪼기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='전기쇼크':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='덩굴채찍':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='불꽃세례':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='물대포':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill3=='연막':
+                input("%s는 명중률이 떨어졌다!"%EnemyPoke)
+            if Poke1skill3=='껍질에숨기':
+                input("%s는 방어가 올라갔다!"%Poke1)
+            if Poke1skill3=='성장':
+                input("%s는 공격이 올라갔다!"%Poke1)
+                input("%s는 특수공격이 올라갔다!"%Poke1)
+        if Do=="기술4":
+            input("%s의 %s!"%(Poke1,Poke1skill4))
+            if Poke1skill4=='몸통박치기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='할퀴기':
+                hurt=40+(20*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='째려보기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill4=='꼬리흔들기':
+                input("%s는 방어가 떨어졌다!"%EnemyPoke)
+            if Poke1skill4=='울음소리':
+                input("%s는공격이 떨어졌다!"%EnemyPoke)
+            if Poke1skill4=='물기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='쪼기':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='전기쇼크':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='덩굴채찍':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='불꽃세례':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='물대포':
+                hurt=60+(10*Poke1Level)
+                EnemyHp-=hurt
+            if Poke1skill4=='연막':
+                input("%s는 명중률이 떨어졌다!"%EnemyPoke)
+            if Poke1skill4=='껍질에숨기':
+                input("%s는 방어가 올라갔다!"%Poke1)
+            if Poke1skill4=='성장':
                 input("%s는 공격이 올라갔다!"%Poke1)
                 input("%s는 특수공격이 올라갔다!"%Poke1)
         if EnemyHp<=1 :
@@ -165,3 +295,68 @@ while True :
         EnemyPoke='피카츄'
     EnemyLevel=random.randint(3,7)
     battle()
+    B=input("1번도로에 계속 남을까?(Y/X)")
+    if B=="X" :
+        break
+input("물풀시티에 도착했다!")
+print("'행동 확인'으로 확인")
+while True:
+        Do=input("무엇을 해볼까?")
+        if Do=="행동 확인" :
+            print("돈 확인 : '돈'")
+            print("포켓몬 회복 : '포켓몬센터'")
+            print("아이템 구매 : '프렌들리숍'")
+            print("나가기 : '나가기'")
+        if Do=="돈" :
+            print("현재 가진 금액 : %s "%Money)
+        if Do=="포켓몬센터" :
+            while True :
+                print("포켓몬들은 체력을 회복했다!")
+                Poke1Hp=90+30*Poke1Level
+                break
+        if Do=="프렌들리숍" :
+            print("상처약 : '상처약'")
+            print("몬스터볼 : '몬스터볼'")
+            print("포켓풀 : '포켓풀'")
+            print("나가기 : '나가기'")
+            while True :
+                    Do=input("무엇을 살까?")
+                    if Do=='상처약' :
+                        if Money>=200 :
+                            print("상처약을 하나 구매했다!")
+                            Money-=200
+                            Potion+=1
+                    if Do=='몬스터볼' :
+                        if Money>=200 :
+                            print("몬스터볼을 하나 구매했다!")
+                            Money-=200
+                            Pokeball+=1
+                    if Do=='포켓풀' :
+                        if Money>=100 :
+                            print("포켓풀을 하나 구매했다!")
+                            Money-=100
+                            Pokegrass+=1
+                    if Do=='나가기' :
+                        Do=""
+                        break
+        if Do=='나가기' :
+            break
+input("2번도로에 도착했다!")
+while True :
+    input("...")
+    A=random.randint(1,5)
+    if A==1:
+        EnemyPoke='꼬렛'
+    if A==2:
+        EnemyPoke='구구'
+    if A==3:
+        EnemyPoke='꼬렛'
+    if A==4:
+        EnemyPoke='깨비참'
+    if A==5:
+        EnemyPoke='피카츄'
+    EnemyLevel=random.randint(7,11)
+    battle()
+    B=input("2번도로에 계속 남을까?(Y/X)")
+    if B=="X" :
+        break
