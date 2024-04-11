@@ -1,0 +1,21 @@
+A=int(input("시 입력"))
+B=int(input("분 입력"))
+X=int(input("줄어드는 시간 입력"))
+B-=X
+while True :
+    if B>=60 :
+        B-=60
+        A+=1
+    if A>23:
+        A=0
+        X-=60
+        B-=X
+    if A<0 :
+        A=23
+    if B<0 :
+        B+=60
+        A-=1
+    if B>=0 and A>=0 :
+        if B<60 and A<24 :
+            break
+print("%d %d"%(A,B))
